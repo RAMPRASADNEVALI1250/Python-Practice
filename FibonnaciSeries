@@ -1,0 +1,12 @@
+x=int(input("How many terms? : "))
+print("0")
+print("1")
+a,b=0,1
+
+for i in range(x-2):
+    a = a+b
+    print(a)
+    a,b=b,a
+
+
+
