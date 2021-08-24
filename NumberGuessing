@@ -1,0 +1,41 @@
+import random
+# For Random Number
+import math
+# for Log function
+lower_bound=int(input("Enter Lower bound value:"))
+#Lower Range
+upper_bound=int(input("Enter Upper bound value:"))
+#Upper Range
+
+#Randamizing number for guessing
+x=random.randint(lower_bound,upper_bound)
+# x stores the number to be gussesed
+
+#Finding maximum number of gueses
+n=  round(math.log(upper_bound-lower_bound+1,2))
+print(f"You have only {n} chances to guess it right!")
+
+
+#no of guesses
+count=0
+
+while count<n:
+    count+=1
+
+    guess=int(input("Guess a number:"))
+    #guess a number
+
+#guess block
+    if guess==x:
+        print("You guessed it right in",count,"try")
+        break
+    elif guess<x:
+        print("You guessed too small")
+    elif guess>x:
+        print("You guessed it too high")
+
+
+# If no.of guesses exceed
+if count >=n:
+    print("Number is",x)
+    print("\n Better Luck next time!")
