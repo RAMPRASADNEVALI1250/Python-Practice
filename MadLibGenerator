@@ -1,0 +1,19 @@
+#ThanksGiving -Mad Lib Generator
+Holiday=input("Enter holiday:")
+person=input("Enter relatives name:")
+kiss_type=input("kiss size:")
+kiss_feel=input("How did u feel when they kiss u:")
+animal_food=input("Food u want:")
+sport=input("ur dad watches which sport:")
+dads_feel_sports=input("How did ur dad feel when his favorite teem scores:")
+ball_game_word=input("Type of scoring in that sport:")
+time=int(input("Time left for the food to get ready:"))
+flavor=input("Flavour of pie the person makes:")
+pie_taste=input("How did the pie taste:")
+print(F"""Today we are celebrating {Holiday} dinner at {person}\'s house.\nWhen we arrived,my {person} greeted us with 
+a big,{kiss_type} kiss.\nKisses are so {kiss_feel}!.\n Now weh're just waiting for the {animal_food} to come out of the oven.\n
+My dad is watching {sport} on TV.\nHe always shouts,"{dads_feel_sports}" when his team scores a {ball_game_word}.\n\tYesss!.\n
+Only {time}more minutes until the {animal_food} will be ready to eat.\nI wonder if my mom will let me try the {animal_food} first.\n
+My grandma makes the best{flavor}pie!.\nIt smells good like {pie_taste}.\n\tHappy {Holiday}""")
+#sample madlib from another module named smallmadlib
+import smallmadlib
