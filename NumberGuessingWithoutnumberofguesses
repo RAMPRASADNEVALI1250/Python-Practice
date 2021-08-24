@@ -1,0 +1,19 @@
+import random as rand
+
+#guessing range input
+lower=int(input("Lower value in range:"))
+higher=int(input("Higher value in range:"))
+
+#randamizing a number
+x=rand.randint(lower,higher)
+
+while True:
+    # User guess
+    u = int(input("Guess a number:"))
+    if u<x:
+        print("Too small")
+    elif u>x:
+        print("Too high")
+    elif u==x:
+        print("You Guessed it right!")
+        break
