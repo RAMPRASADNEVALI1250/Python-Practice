@@ -1,0 +1,75 @@
+import tkinter
+from tkinter import *
+from pytube import YouTube
+from tkinter import messagebox,filedialog
+
+#Defining createwidgets function to create necessary tkinter widgets
+def widgets():
+    link_label=Label(root,text="YouTube link:",bg="#E8D579")
+    link_label.grid(row=1,column=0,pady=5,padx=5)
+    root.linkText = Entry(root,width=55,textvariable=video_Link)
+
+    root.linkText.grid(row=1,column=1,pady=5,padx=5,columnspan=2)
+    destination_label = Label(root,text="Destination :",bg="#E8D579")
+    destination_label.grid(row=2,column=0,pady=5,padx=5)
+    root.destinationText = Entry(root,width=40,textvariable=download_Path)
+    root.destinationText.grid(row=2,column=1,pady=5,padx=5)
+    browse_B = Button(root,text="Browse",command=Browse,width=10,bg="#05E8E0")
+    browse_B.grid(row=2,column=2,pady=1,padx=1)
+
+    Download_B=Button(root,text="Download",command=Download,width=20,bg="#05E8E0")
+    Download_B.grid(row=3,column=1,pady=3,padx=3)
+
+
+#defining browse to select a
+#destination filder to save the video
+def Browse():
+    #presenting user with a pop up for directory selection.
+#initialdir argument is optional retriving the user input
+#destination directory and sorting it in downloadingdirectory
+    download_Directory = filedialog.askdirectory(initialdir="Your directory path")
+    download_Path.set(download_Directory)
+
+#defining download
+def Download():
+
+    #getting user input youtube link
+    Youtube_link = video_Link.get()
+
+    #select the optimal location for saving files
+    download_Folder = download_Path.get()
+
+
+    #creating object of youtube
+    getVideo = YouTube(Youtube_link)
+    videoStream=getVideo.streams.first()
+
+    #getting all the variable streams of the youtube video and selecting the first from the
+    videoStream.download(download_Folder)
+
+
+    #displaying the message
+    messagebox.showinfo(f"Succcesfully downloaded and saved in {download_Folder}")
+
+
+    #creating object of tk class
+root = Tk()
+
+
+#setting the title ,background color and size of the tkinter window
+#and diabling the resizing property
+root.geometry("600x120")
+root.resizable(False,False)
+root.title("YouTube Video Downloader")
+root.config(background="#000000")
+
+#creating the tkinter variables
+video_Link=StringVar()
+download_Path = StringVar()
+
+
+#Calling the widgets function
+widgets()
+
+#definning infinite loop to run application
+root.mainloop()
