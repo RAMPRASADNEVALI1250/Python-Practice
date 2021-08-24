@@ -1,0 +1,203 @@
+import sys
+#sys module for exiting program if user didnt enter
+#mandatory fields
+
+def initial_phonebook():
+    #contacts list storing function
+    rows=int(input("No of contacts you want to feed:"))
+    #rows for number of contacts to be stored
+    cols=5
+    #entities like name/number/email/date of birth/relation
+    phone_book=[]
+    #this list stores the contacts
+    print(phone_book)
+    for i in range(rows):
+        #i for each contact
+        print(f"\nEnter contact {i+1} details in the following order(only)")
+        print("Note: * indicates mandatory fields")
+        temp=[]
+        #each contact for appending for the orginal list
+        for j in range(cols):
+            #j for each entity
+            if j==0:
+                #name
+                temp.append(str(input("Enter name*")))
+                if temp[j]=='' or temp[j]==' ':
+                    sys.exit("Name is a mandotaory field. Process exiting due to blank field...  ")
+            if j==1:
+                #mobile number
+                temp.append(int(input("Enter mobile number*:")))
+            if j==2:
+                #email
+                temp.append(str(input("EnterE-mail address:")))
+                if temp[j]=='' or temp[j]==' ':
+                    temp[j]=None
+            if j==3:
+                #date of birth
+                temp.append(str(input("Date of Birth..DD/MM/YYYY:")))
+                if temp[j]=='' or temp[j]==' ':
+                    temp[j]=None
+            if j==4:
+                #Relation
+                temp.append(str(input("Enter catogery(family/friend/work/others")))
+                if temp[j]=='' or temp[j]==' ':
+                    temp[j]=None
+        phone_book.append(temp)
+        #appending temp list to original phone book
+    print(phone_book)
+    return phone_book
+
+
+def menu():
+    #features,will be executed when called
+    print("***************************************************")
+    print("\t\t\tSmart phone directroy",flush=False)
+    print("***************************************************")
+    print("You can perform : ")
+    print("1.Add a contact")
+    print("2.Remove an existing contact")
+    print("3.Delete all contacts")
+    print("4.Search for a contact")
+    print("5.Display all contacts")
+    print("6.Exit phonebook")
+
+
+    choice=int(input("Please enter your choice:"))
+    return choice
+
+def add_contact(pb):
+    dip=[]
+    #for temporary use
+    for i in range(len(pb[0])):
+        if i==0:
+            dip.append(str(input("Enter new name ")))
+        if i==1:
+            dip.append(int(input("Enter phone number")))
+        if i==2:
+            dip.append(str(input("Enter e mail")))
+        if i==3:
+            dip.append(str(input("Enter date of birth")))
+        if i==4:
+            dip.append(str(input("Enter relation")))
+
+    pb.append(dip)
+    return pb
+
+
+def remove_contact(pb):
+    query=str(input("Enter name of the contact to be removed"))
+
+    flag=0
+    for i in range(len(pb)):
+        if query==pb[i][0]:
+            flag+=1
+
+            print(pb.pop(i))
+
+            print("This query has now been removed")
+            return pb
+
+    if temp==0:
+        print(f"Sorry,you have entered invalid query\n"
+              "please recheck and try again later"
+              f"{query} not found")
+
+
+def delete_all(pb):
+    return pb.clear()
+
+
+def search_existing(pb):
+    choice=int(input("Enter search criteria \n"
+                     "1.Name\n"
+                     "2.Number\n"
+                     "3.email id\n"
+                     "4.date of birth\n"
+                     "5.relation\n"
+                     "please enter option:"))
+    temp=[]
+    check=-1
+    #can take any value for check
+    if choice==1:
+        query=str(input("Please enter the name of the contact you want to search"))
+        for i in range(len(pb)):
+            if query==pb[i][0]:
+                check=i
+                temp.append(pb[i])
+
+    elif choice==2:
+        query = str(input("Please enter the nunber of the contact you want to search"))
+        for i in range(len(pb)):
+            if query==pb[i][1]:
+                check=i
+                temp.append(pb[i])
+
+    elif choice ==3:
+        query = str(input("Please enter the e mail of the contact you want to search"))
+        for i in range(len(pb)):
+            if query==pb[i][2]:
+                check=i
+                temp.append(pb[i])
+
+    elif choice==4:
+        query = str(input("Please enter the date of birth of the contact you want to search"))
+        for i in range(len(pb)):
+            if query==pb[i][3]:
+                check=i
+                temp.append(pb[i])
+    elif choice==5:
+        query = str(input("Please enter the relation of the contact you want to search"))
+        for i in range(len(pb)):
+            if query==pb[i][4]:
+                check=i
+                temp.append(pb[i])
+    else:
+        print("Invalid search criteria")
+        return -1
+    if check==-1:
+        return -1
+    else:
+        display_all(temp)
+    return check
+
+def display_all(pb):
+    if not pb:
+        print("List is empty")
+    else:
+        for i in range(len(pb)):
+            print(pb[i])
+
+
+
+def thanks():
+    print("Thank you for using smartphone directory system.")
+    print("**********************************************")
+    print("Please revist!")
+    sys.exit("good bye,have a nice day ahead!")
+
+#main function code
+print("*******************************")
+print("Hello dear user,welcome to our smartphone directory system")
+print("You need to explore this directory")
+print(".........................")
+
+
+
+ch=1
+pb=initial_phonebook()
+while ch in (1,2,3,4,5):
+    ch=menu()
+    if ch==1:
+        pb=add_contact(pb)
+    elif ch==2:
+        pb=remove_contact(pb)
+    elif ch==3:
+        pb=delete_all(pb)
+    elif ch==4:
+        d=search_existing(pb)
+        if d==-1:
+            print("The contact doesnot exist.Please try again")
+    elif ch==5:
+        display_all(pb)
+    else:
+        thanks()
