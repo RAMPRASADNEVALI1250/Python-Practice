@@ -1,0 +1,11 @@
+def leap_year(year):
+    if year % 100 == 0:
+        if year % 400 == 0:
+            print(f"Since its a centuary year it should be divisible by 400\n\t{year} is a leap year")
+        else:
+            print(f"Its a centuary year and its not divisible by 400\n\t {year} is not a leap year")
+    elif year % 4 == 0:
+        print(f"{year} Is a leap year ")
+    else:
+        print(f"{year} is not a leap year")
+leap_year(2400)
