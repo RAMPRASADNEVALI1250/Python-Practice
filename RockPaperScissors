@@ -1,0 +1,34 @@
+import random
+import sys
+l=["Rock","Paper","Scissors"]
+while True:
+    x=random.choice(l)
+    y=int(input("Choose 1.Rock"
+          "       2.Paper"
+          "       3.Scissors\n type '1','2' or'3'\nTo exit press any other key"))
+    if x=="Rock" and y==1:
+        print("Rock : Rock \n Draw")
+    if x=="Rock" and y==2:
+        print("Rock : Paper \n You lost")
+    if x=="Rock" and y==3:
+        print("Rock : Scissors \n You win")
+
+
+
+    if x=="Paper" and y==1:
+        print(f"{x} : Rock \n You lost")
+    if x=="Paper" and y==2:
+        print(f"{x}: Paper \n Draw")
+    if x=="Paper" and y==3:
+        print(f"{x} : Scissors \n You win")
+
+
+    if x=="Scissors" and y==1:
+        print(f"{x}: Rock \n You win")
+    if x=="Scissors" and y==2:
+        print(f"{x} : Paper \n You lost")
+    if x=="Scissors" and y==3:
+        print(f"{x} : Scissors \n Draw")
+
+    if y not in (1,2,3):
+        sys.exit("Thanks for playing")
