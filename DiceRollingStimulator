@@ -1,0 +1,12 @@
+import random as rand
+
+
+while True:
+    print("Do you want to roll the dice:")
+    roll=input("Yes/no:")
+    if roll.lower()=="yes" or roll.lower()=="y":
+        print("Rolling dice ....")
+        print(rand.randint(1,6))
+    elif roll.lower()=="no" or roll.lower()=="n":
+        print("ok.")
+        break
